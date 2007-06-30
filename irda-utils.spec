@@ -4,18 +4,18 @@ Version:	0.9.16
 Release:	%mkrel 9
 
 Source0:	http://download.sourceforge.net/irda/%{name}-%{version}.tar.bz2
-Patch1:		irda-utils-0.9.14-chkconfig.patch.bz2
-Patch2:		irda-utils-0.9.14-typo.patch.bz2
-Patch3:		irda-utils-0.9.13-i18n.patch.bz2
-Patch4:		irda-utils-0.9.16-rootonly.patch.bz2
-Patch5:		irda-utils-0.9.15-rh1.patch.bz2
-Patch6:		irda-utils-0.9.16-gcc3.4-fix.patch.bz2
-Patch7:		irda-utils-0.9.16-tekram-ppc-buildfix.patch.bz2
-Patch8:		irda-utils-0.9.17-fix-build.patch.bz2
-Patch9:		irda-utils-0.9.16-pinit.patch.bz2
-Patch10:	irda-utils-0.9.16-rh2.patch.bz2
-Patch11:	irda-utils-0.9.16-glib2.patch.bz2
-Patch12:	irda-utils-0.9.16-io.patch.bz2
+Patch1:		irda-utils-0.9.14-chkconfig.patch
+Patch2:		irda-utils-0.9.14-typo.patch
+Patch3:		irda-utils-0.9.13-i18n.patch
+Patch4:		irda-utils-0.9.16-rootonly.patch
+Patch5:		irda-utils-0.9.15-rh1.patch
+Patch6:		irda-utils-0.9.16-gcc3.4-fix.patch
+Patch7:		irda-utils-0.9.16-tekram-ppc-buildfix.patch
+Patch8:		irda-utils-0.9.17-fix-build.patch
+Patch9:		irda-utils-0.9.16-pinit.patch
+Patch10:	irda-utils-0.9.16-rh2.patch
+Patch11:	irda-utils-0.9.16-glib2.patch
+Patch12:	irda-utils-0.9.16-io.patch
 Group:		System/Servers
 URL:		http://irda.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
