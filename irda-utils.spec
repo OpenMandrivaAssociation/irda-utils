@@ -58,7 +58,7 @@ rm -f irdadump/{install-sh,mkinstalldirs,missing}
 
 %build
 %serverbuild
-%make all RPM_BUILD_ROOT="$RPM_BUILD_ROOT" RPM_OPT_FLAGS="$RPM_OPT_FLAGS" ROOT="$RPM_BUILD_ROOT" CFLAGS="$RPM_OPT_FLAGS -I../include"
+%make all
 
 %install
 rm -rf $RPM_BUILD_ROOT
