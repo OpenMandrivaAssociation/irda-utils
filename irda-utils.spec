@@ -1,18 +1,15 @@
 Summary:	Utilities for infrared communication between devices
 Name:		irda-utils
 Version:	0.9.18
-Release:	%mkrel 3
+Release:	%mkrel 4
 
 Source0:	http://download.sourceforge.net/irda/%{name}-%{version}.tar.gz
-Patch1:		irda-utils-0.9.14-chkconfig.patch
+Patch0:		irda-utils-0.9.18-chkconfig-pinit-i18n-rh2.patch
 Patch2:		irda-utils-0.9.14-typo.patch
-Patch3:		irda-utils-0.9.13-i18n.patch
 Patch4:		irda-utils-0.9.17-rootonly.patch
 Patch5:		irda-utils-0.9.15-rh1.patch
 Patch7:		irda-utils-0.9.16-tekram-ppc-buildfix.patch
 Patch8:		irda-utils-0.9.18-fix-build.patch
-Patch9:		irda-utils-0.9.16-pinit.patch
-Patch10:	irda-utils-0.9.16-rh2.patch
 Patch12:	irda-utils-0.9.16-io.patch
 Patch13:	irda-utils-0.9.18-fix-install.patch
 Group:		System/Servers
@@ -43,18 +40,14 @@ actually implemented outside the kernel.
 
 %prep
 %setup -q
-%patch1 -p1 -b .chkconfig
+%patch0 -p1 -b .irda.rc-fixes
 %patch2 -p1 -b .typo
-%patch3 -p1 -b .i18n
 %patch4 -p1 -b .rootonly
 %patch5 -p1 -b .rh1
 %patch7 -p1 -b .tekram-ppc-buildfix
 %patch8 -p1 -b .fix-build
-%patch9 -p1 -b .pinit
-%patch10 -p1 -b .rh2
 %patch12 -p1 -b .io
 %patch13 -p1 -b .fix-install
-rm -f irdadump/{install-sh,mkinstalldirs,missing}
 
 %build
 %serverbuild
