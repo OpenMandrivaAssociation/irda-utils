@@ -14,6 +14,7 @@ Patch12:	irda-utils-0.9.16-io.patch
 Patch13:	irda-utils-0.9.18-fix-install.patch
 Group:		System/Servers
 URL:		http://irda.sourceforge.net/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPL
 BuildRequires:	glib2-devel
 BuildRequires:	pciutils-devel
