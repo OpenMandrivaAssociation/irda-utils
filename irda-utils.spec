@@ -1,7 +1,7 @@
 Summary:	Utilities for infrared communication between devices
 Name:		irda-utils
 Version:	0.9.18
-Release:	%mkrel 4
+Release:	%mkrel 5
 
 Source0:	http://download.sourceforge.net/irda/%{name}-%{version}.tar.gz
 Patch0:		irda-utils-0.9.18-chkconfig-pinit-i18n-rh2.patch
