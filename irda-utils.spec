@@ -1,7 +1,7 @@
 Summary:	Utilities for infrared communication between devices
 Name:		irda-utils
 Version:	0.9.18
-Release:	%mkrel 9
+Release:	%mkrel 10
 
 Source0:	http://download.sourceforge.net/irda/%{name}-%{version}.tar.gz
 Patch0:		irda-utils-0.9.18-chkconfig-pinit-i18n-rh2.patch
@@ -12,6 +12,7 @@ Patch7:		irda-utils-0.9.16-tekram-ppc-buildfix.patch
 Patch8:		irda-utils-0.9.18-fix-build.patch
 Patch12:	irda-utils-0.9.16-io.patch
 Patch13:	irda-utils-0.9.18-fix-install.patch
+Patch14:	irda-utils-0.9.18-reorder-build.patch
 Group:		System/Servers
 URL:		http://irda.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -48,6 +49,7 @@ actually implemented outside the kernel.
 %patch8 -p1 -b .fix-build
 %patch12 -p1 -b .io
 %patch13 -p1 -b .fix-install
+%patch14 -p1 -b .reorder
 
 %build
 %serverbuild
@@ -90,16 +92,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/irattach
 %{_sbindir}/irdaping
 %{_sbindir}/dongle_attach
-%ifnarch ppc %{sunsparc}
+%ifnarch ppc %{sunsparc} %mips
 %{_sbindir}/findchip
+%{_sbindir}/smcinit
+%{_sbindir}/tosh1800-smcinit
+%{_sbindir}/tosh2450-smcinit
 %endif
 %{_sbindir}/irdadump
 %{_bindir}/irpsion5
 %{_bindir}/irkbd
 %{_sbindir}/irnetd
-%{_sbindir}/smcinit
-%{_sbindir}/tosh1800-smcinit
-%{_sbindir}/tosh2450-smcinit
 %{_initrddir}/irda
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/irda
 #%config(noreplace) %{_sysconfdir}/sysconfig/network-scripts/ifcfg-irlan0
