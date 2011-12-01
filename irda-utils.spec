@@ -56,10 +56,10 @@ actually implemented outside the kernel.
 %make all
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT{%{_sbindir},%{_bindir},%{_initrddir}}
+rm -rf %{buildroot}
+mkdir -p %{buildroot}{%{_sbindir},%{_bindir},%{_initrddir}}
 
-%makeinstall_std  ROOT="$RPM_BUILD_ROOT" MANDIR="$RPM_BUILD_ROOT%{_mandir}"
+%makeinstall_std  ROOT="%{buildroot}" MANDIR="%{buildroot}%{_mandir}"
 
 for dir in irattach irdadump irdaping tekram; do
     cp $dir/README $dir/README.$dir
@@ -70,7 +70,7 @@ mv smcinit/README.Tom smcinit/README.Tom.scminit
 mv smcinit/README.Rob smcinit/README.Rob.smcinit
 mv smcinit/RobMiller-irda.html smcinit/README.Rob.smcinit.html
 
-rm -f $RPM_BUILD_ROOT/etc/sysconfig/network-scripts/ifcfg-irlan0
+rm -f %{buildroot}/etc/sysconfig/network-scripts/ifcfg-irlan0
 
 %post
 %_post_service irda
@@ -79,7 +79,7 @@ rm -f $RPM_BUILD_ROOT/etc/sysconfig/network-scripts/ifcfg-irlan0
 %_preun_service irda
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,0755)
