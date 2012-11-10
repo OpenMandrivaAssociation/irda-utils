@@ -1,0 +1,11 @@
+--- irda-utils-0.9.16/tekram/Makefile.bak	2004-03-31 23:55:49.000000000 +0200
++++ irda-utils-0.9.16/tekram/Makefile	2004-07-11 17:27:51.702878253 +0200
+@@ -37,7 +37,7 @@
+ #
+ # System stuff
+ #
+-SYS_INCLUDES = -I/usr/src/linux/include -I/usr/include -I../include
++SYS_INCLUDES = -I/usr/include -I../include
+ SYS_LIBRARIES = 
+ SYS_LIBPATH = -L/usr/lib -L/usr/local/lib 
+ 

@@ -1,0 +1,11 @@
+--- irda-utils-0.9.18/irnetd/Makefile.orig	2007-07-02 01:33:47.000000000 -0300
++++ irda-utils-0.9.18/irnetd/Makefile	2007-07-02 01:33:55.000000000 -0300
+@@ -55,7 +55,7 @@
+ 
+ install: irnetd
+ 	$(prn_install)
+-	$(ECMD) install irnetd /usr/sbin/
++	$(ECMD) install irnetd $(ROOT)/usr/sbin/
+ 
+ 
+ clean:

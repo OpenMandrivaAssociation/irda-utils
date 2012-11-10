@@ -1,0 +1,84 @@
+--- irda-utils-0.9.18/smcinit/smcinit.c.fix-build	2006-07-11 03:16:06.000000000 -0300
++++ irda-utils-0.9.18/smcinit/smcinit.c	2007-07-02 01:13:06.000000000 -0300
+@@ -262,7 +262,7 @@
+ 	 */
+ 	struct pci_access *acc;
+ 	struct pci_dev *dev;
+-	u16 twobyte;
++	u_int16_t twobyte;
+ 	int i = 0, chip = 0;
+ 	int local_sir_io, local_fir_io, local_fir_irq, local_fir_dma;
+ 	unsigned int *address, SMC_BASE = 0;
+--- irda-utils-0.9.18/tekram/irkbd.c.fix-build	2006-03-09 07:25:19.000000000 +0100
++++ irda-utils-0.9.18/tekram/irkbd.c	2006-06-06 14:38:07.000000000 +0200
+@@ -46,6 +46,8 @@
+ 
+ #include <irda.h>
+ 
++#include <stdint.h>
++
+ #include "irkbd.h"
+ 
+ static void irkbd_data_indication(int signo);
+@@ -249,7 +251,7 @@ static void irkbd_data_request(int cmd)
+  *    Process response code
+  *
+  */
+-static inline void irkbd_handle_response(__u8 rsp)
++static inline void irkbd_handle_response(uint8_t rsp)
+ {
+ 	switch (rsp) {
+ 	case IRKBD_RSP_RSPN41:
+@@ -296,13 +298,13 @@ static inline void irkbd_handle_response
+  *    Handle mouse event. The scancodes follows the PS/2 mouse protocol. Half
+  *    a protocol for half a mouse :-)
+  */
+-static inline void irkbd_handle_mouse(__u8 scancode)
++static inline void irkbd_handle_mouse(uint8_t scancode)
+ {	
+ 	/* Write to fifo */
+ 	write(self->fifo, &scancode, 1);
+ }
+ 
+-static inline void handle_scancode(__u8 scancode)
++static inline void handle_scancode(uint8_t scancode)
+ {
+ 	/* Insert scancode into kernel */
+ 	if (ioctl(self->fd,TIOCSTI, &scancode))
+@@ -317,12 +319,12 @@ static inline void handle_scancode(__u8 
+  */
+ static void irkbd_data_indication(int signo)
+ {
+-	__u8 *frame = self->frame;
++	uint8_t *frame = self->frame;
+ 	int actual;
+ 	int i, n=0;
+-	__u8 len;
+-	__u8 sublen;
+-	__u8 subtype;
++	uint8_t len;
++	uint8_t sublen;
++	uint8_t subtype;
+ 
+ 	actual = recv(self->sock, frame, 2048, 0);
+ 	if (actual <= 0) {
+--- irda-utils-0.9.18/tekram/irkbd.h.fix-build	2006-03-09 07:25:19.000000000 +0100
++++ irda-utils-0.9.18/tekram/irkbd.h	2006-06-06 14:36:48.000000000 +0200
+@@ -79,14 +79,14 @@
+ 
+ 	int connected;
+ 
+-	__u32 saddr;        /* my local address */
+-	__u32 daddr;        /* peer address */
++	uint32_t saddr;        /* my local address */
++	uint32_t daddr;        /* peer address */
+ 
+ 	int mtu_tx;
+ 
+ 	struct itimerval watchdog_timer;
+ 
+-	__u8 frame[IRKBD_BUF_SIZE]; /* Buffer for received data */
++	uint8_t frame[IRKBD_BUF_SIZE]; /* Buffer for received data */
+ 	int head;
+ 	int tail;
+ };

@@ -1,0 +1,13 @@
+Index: irda-utils-0.9.18/Makefile
+===================================================================
+--- irda-utils-0.9.18.orig/Makefile
++++ irda-utils-0.9.18/Makefile
+@@ -27,7 +27,7 @@ include output.mak
+ 
+ TARGET = test
+ 
+-DIRS = irattach irdaping etc man irnetd psion tekram findchip irdadump smcinit
++DIRS = irattach irdaping etc man irnetd psion tekram irdadump findchip smcinit
+ CFLAGS= -O2 -W -Wall
+ 
+ all:

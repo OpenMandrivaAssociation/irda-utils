@@ -1,0 +1,93 @@
+--- a/etc/irda.rc
++++ b/etc/irda.rc
+@@ -4,9 +4,20 @@
+ #               IrDA support
+ #
+ # chkconfig: 2345 45 96
++# description: IrDA(TM) (Infrared Data Association) is an industry standard \
++# for wireless, infrared communication between devices. IrDA speeds range \
++# from 9600 bps to 4 Mbps, and IrDA can be used by many modern devices \
++# including laptops, LAN adapters, PDAs, printers, and mobile phones.
+ #
+-# description: IrDA stack for Linux
+-#
++### BEGIN INIT INFO
++# Provides: irda
++# Short-Description: Infrared Data Association daemon
++# Description: IrDA(TM) (Infrared Data Association) is an industry standard
++#              for wireless, infrared communication between devices. IrDA speeds range
++#              from 9600 bps to 4 Mbps, and IrDA can be used by many modern devices
++#              including laptops, LAN adapters, PDAs, printers, and mobile phones.
++# Default-Start: 2 3 4 5
++### END INIT INFO
+ 
+ # Source function library.
+ . /etc/rc.d/init.d/functions
+@@ -14,6 +25,27 @@
+ # Source IrDA networking configuration.
+ . /etc/sysconfig/irda
+ 
++prog="IrDA"
++
++start() {
++        # Attach irda device 
++        echo -n $"Starting $prog: "
++	/sbin/modprobe ircomm-tty 2>/dev/null
++	/sbin/modprobe irtty-sir 2>/dev/null
++	/sbin/modprobe irnet 2>/dev/null
++        daemon /usr/sbin/irattach ${DEVICE} ${ARGS}
++	touch /var/lock/subsys/irda
++        echo
++}
++
++stop() {
++        # Stop service.
++        echo -n $"Shutting down $prog: "
++	killproc irattach
++	rm -f /var/lock/subsys/irda
++        echo
++}
++
+ # Check that irda is up.
+ [ ${IRDA} = "no" ] && exit 0
+ 
+@@ -30,29 +62,25 @@ fi
+ # See how we were called.
+ case "$1" in
+   start)
+-        # Attach irda device 
+-        echo -n "Starting IrDA: "
+-        daemon /usr/sbin/irattach ${DEVICE} ${ARGS}
+-	touch /var/lock/subsys/irda
+-        echo
++	start
+         ;;
+   stop)
+-        # Stop service.
+-        echo -n "Shutting down IrDA: "
+-	killproc irattach
+-	rm -f /var/lock/subsys/irda
+-        echo
++	stop
+         ;;
+   status)
+ 	status irattach
+ 	;;
+   restart|reload)
+-	$0 stop
+-	$0 start
++	stop
++	start
++	;;
++  condrestart)
++	[ -e /var/lock/subsys/irda ] && (stop; start)
+ 	;;
+   *)
+-        echo "Usage: irda {start|stop|restart|reload|status}"
++        echo $"Usage: $0 {start|stop|restart|reload|condrestart|status}"
+         exit 1
+ esac
+ 
+-exit 0
++# pass on latest operation's status
++exit
