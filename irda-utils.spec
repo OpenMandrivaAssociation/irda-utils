@@ -1,7 +1,7 @@
 Summary:	Utilities for infrared communication between devices
 Name:		irda-utils
 Version:	0.9.18
-Release:	15
+Release:	16
 Group:		System/Servers
 License:	GPLv2
 Url:		http://irda.sourceforge.net/
