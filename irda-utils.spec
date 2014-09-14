@@ -77,7 +77,7 @@ rm -f %{buildroot}/etc/sysconfig/network-scripts/ifcfg-irlan0
 %{_sbindir}/irattach
 %{_sbindir}/irdaping
 %{_sbindir}/dongle_attach
-%ifnarch ppc %{sunsparc} %mips %armx
+%ifnarch ppc %{sunsparc} %mips aarch64
 %{_sbindir}/findchip
 %{_sbindir}/smcinit
 %{_sbindir}/tosh1800-smcinit
