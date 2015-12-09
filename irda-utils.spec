@@ -1,3 +1,5 @@
+%define _disable_lto 1
+
 Summary:	Utilities for infrared communication between devices
 Name:		irda-utils
 Version:	0.9.18
@@ -40,10 +42,12 @@ actually implemented outside the kernel.
 %prep
 %setup -q
 %apply_patches
+# use gnu89 inline semantics
+sed -i 's/CFLAGS=/CFLAGS=-fgnu89-inline /' */Makefile
 
 %build
 %serverbuild
-%make all
+%make all V=1
 
 %install
 mkdir -p %{buildroot}{%{_sbindir},%{_bindir},%{_initrddir}}
