@@ -91,7 +91,7 @@ rm -f %{buildroot}/etc/sysconfig/network-scripts/ifcfg-irlan0
 %{_bindir}/irpsion5
 %{_bindir}/irkbd
 %{_sbindir}/irnetd
-%{_initrddir}/irda.service
+#{_initrddir}/irda
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/irda
 #%config(noreplace) %{_sysconfdir}/sysconfig/network-scripts/ifcfg-irlan0
 %{_mandir}/man?/*
