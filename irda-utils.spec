@@ -41,7 +41,7 @@ actually implemented outside the kernel.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 # use gnu89 inline semantics
 sed -i 's/CFLAGS=/CFLAGS=-fgnu89-inline /' */Makefile
 
