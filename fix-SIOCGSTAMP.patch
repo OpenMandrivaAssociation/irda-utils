@@ -1,0 +1,12 @@
+diff --git a/irdadump/irdadump.c b/irdadump/irdadump.c
+index 46cc6b0..9656c18 100644
+--- a/irdadump/irdadump.c
++++ b/irdadump/irdadump.c
+@@ -44,6 +44,7 @@
+ 
+ #include "capture.h"
+ #include "irdadump.h"
++#include <linux/sockios.h>
+ 
+ int config_print_diff = 0;
+ int config_dump_frame = 0;

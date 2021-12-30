@@ -17,6 +17,7 @@ Patch8:		irda-utils-0.9.18-fix-build.patch
 Patch12:	irda-utils-0.9.16-io.patch
 Patch13:	irda-utils-0.9.18-fix-install.patch
 Patch14:	irda-utils-0.9.18-reorder-build.patch
+Patch15:	fix-SIOCGSTAMP.patch
 
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpci)
@@ -91,7 +92,7 @@ rm -f %{buildroot}/etc/sysconfig/network-scripts/ifcfg-irlan0
 %{_bindir}/irpsion5
 %{_bindir}/irkbd
 %{_sbindir}/irnetd
-#{_initrddir}/irda
+%{_initrddir}/irda
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/irda
 #%config(noreplace) %{_sysconfdir}/sysconfig/network-scripts/ifcfg-irlan0
 %{_mandir}/man?/*
