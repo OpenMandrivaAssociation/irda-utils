@@ -6,7 +6,7 @@ Version:	0.9.18
 Release:	27
 Group:		System/Servers
 License:	GPLv2
-Url:		http://irda.sourceforge.net/
+Url:		https://irda.sourceforge.net/
 Source0:	http://download.sourceforge.net/irda/%{name}-%{version}.tar.gz
 Patch0:		irda-utils-0.9.18-chkconfig-pinit-i18n-rh2.patch
 Patch2:		irda-utils-0.9.14-typo.patch
