@@ -19,6 +19,7 @@ Patch13:	irda-utils-0.9.18-fix-install.patch
 Patch14:	irda-utils-0.9.18-reorder-build.patch
 Patch15:	fix-SIOCGSTAMP.patch
 
+BuildRequires:	make
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpci)
 Requires(post,preun):	rpm-helper
